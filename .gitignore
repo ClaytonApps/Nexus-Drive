@@ -1,0 +1,18 @@
+*.iml
+.gradle/
+.idea/
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Gradle build outputs (any depth)
+build/
+**/build/
+
+# Local config and secrets — NUNCA commitar
+local.properties
+
+# APKs e bundles gerados localmente
+*.apk
+*.aab

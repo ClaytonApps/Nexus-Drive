@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nexus_primary">#0B5FFF</color>
+    <color name="nexus_primary_dark">#003FB8</color>
+    <color name="nexus_accent">#00E5A0</color>
+    <color name="nexus_warning">#FFB020</color>
+    <color name="nexus_danger">#FF3B30</color>
+    <color name="nexus_background">#0E1116</color>
+    <color name="nexus_surface">#1A1F26</color>
+    <color name="nexus_text_primary">#FFFFFF</color>
+    <color name="nexus_text_secondary">#A0A6B0</color>
+</resources>
