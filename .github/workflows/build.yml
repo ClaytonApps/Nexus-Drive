@@ -11,6 +11,8 @@ jobs:
   build-debug:
     name: Build Debug APK
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
@@ -44,3 +46,15 @@ jobs:
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 30
+
+      # Publica o APK numa Release de tag fixa "latest", gerando um link
+      # de download estável e compartilhável. Só roda em push na main.
+      - name: Publicar APK na Release de teste
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Nexus — build de teste
+          body: APK de teste gerado automaticamente a partir do último push na main.
+          files: app/build/outputs/apk/debug/*.apk
+          make_latest: true
