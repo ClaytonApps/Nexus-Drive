@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Nexus Drive"
+rootProject.name = "Nexus"
 include(":app")

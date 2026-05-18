@@ -1,4 +1,4 @@
-# Nexus Drive
+# Nexus
 
 Aplicativo Android nativo (Kotlin) para auxílio a motoristas de app — calcula
 em tempo real a rentabilidade de cada oferta de corrida nos apps Uber Driver,
@@ -31,7 +31,7 @@ app funciona como antes (é o caso do APK de debug gerado pelo CI).
 Para ativar o login:
 
 1. Crie um projeto no [Firebase Console](https://console.firebase.google.com/).
-2. Adicione um app Android com o pacote `com.nexusdrive.app`.
+2. Adicione um app Android com o pacote `app.nexus.mobile`.
 3. Em **Authentication → Sign-in method**, ative **E-mail/senha**.
 4. Em **Firestore Database**, crie o banco (modo produção) e publique as
    regras de segurança da seção abaixo.

@@ -12,11 +12,11 @@ if (project.file("google-services.json").exists()) {
 }
 
 android {
-    namespace = "com.nexusdrive.app"
+    namespace = "app.nexus.mobile"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.nexusdrive.app"
+        applicationId = "app.nexus.mobile"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Nexus Drive</string>
-    <string name="accessibility_service_label">Nexus Drive - Análise de Corridas</string>
+    <string name="app_name">Nexus</string>
+    <string name="accessibility_service_label">Nexus - Análise de Corridas</string>
     <string name="accessibility_service_summary">Analisa ofertas de corridas em tempo real</string>
-    <string name="accessibility_service_description">O Nexus Drive utiliza o serviço de acessibilidade para ler informações das ofertas de corrida exibidas pelos aplicativos de motorista (Uber, 99, inDrive) e calcular automaticamente a viabilidade financeira de cada corrida (R$/km, R$/hora). Nenhum dado é enviado para fora do dispositivo sem sua autorização.</string>
+    <string name="accessibility_service_description">O Nexus utiliza o serviço de acessibilidade para ler informações das ofertas de corrida exibidas pelos aplicativos de motorista (Uber, 99, inDrive) e calcular automaticamente a viabilidade financeira de cada corrida (R$/km, R$/hora). Nenhum dado é enviado para fora do dispositivo sem sua autorização.</string>
 
     <!-- Onboarding / Disclosure de permissões (requisito do Google Play) -->
-    <string name="onboarding_title">Bem-vindo ao Nexus Drive</string>
+    <string name="onboarding_title">Bem-vindo ao Nexus</string>
     <string name="onboarding_subtitle">Antes de começar, precisamos da sua autorização para duas permissões especiais. Leia com atenção — nada é ativado sem o seu consentimento.</string>
 
     <string name="disclosure_accessibility_title">1. Serviço de Acessibilidade</string>
     <string name="disclosure_accessibility_body"><![CDATA[
 <b>Por que precisamos:</b><br/>
-O Nexus Drive lê apenas as informações já visíveis na sua tela quando o app da Uber, 99 ou inDrive está em primeiro plano (valor da corrida, distância e tempo estimado). Sem essa permissão, o aplicativo não consegue calcular se uma corrida vale a pena.<br/><br/>
+O Nexus lê apenas as informações já visíveis na sua tela quando o app da Uber, 99 ou inDrive está em primeiro plano (valor da corrida, distância e tempo estimado). Sem essa permissão, o aplicativo não consegue calcular se uma corrida vale a pena.<br/><br/>
 <b>O que NÃO fazemos:</b><br/>
 • Não lemos mensagens, e-mails, senhas, conteúdo de navegador, redes sociais ou qualquer app fora da Uber, 99 e inDrive.<br/>
 • Não gravamos áudio nem capturamos a tela.<br/>
@@ -22,7 +22,7 @@ O Nexus Drive lê apenas as informações já visíveis na sua tela quando o app
 • Lemos os textos da tela de oferta de corrida (apenas dos apps de motorista listados).<br/>
 • Calculamos lucro líquido localmente, no seu aparelho.<br/>
 • Mostramos o resultado em um pequeno balão flutuante.<br/><br/>
-Você pode desativar essa permissão a qualquer momento em <b>Configurações → Acessibilidade → Nexus Drive</b>.
+Você pode desativar essa permissão a qualquer momento em <b>Configurações → Acessibilidade → Nexus</b>.
     ]]></string>
 
     <string name="disclosure_overlay_title">2. Sobreposição de Tela</string>
@@ -50,7 +50,7 @@ Quando você <b>aceita</b> uma corrida, podemos opcionalmente enviar para o noss
     <string name="status_overlay_missing">Sobreposição: não concedida</string>
 
     <!-- Login / autenticação de motoristas -->
-    <string name="login_title">Nexus Drive</string>
+    <string name="login_title">Nexus</string>
     <string name="login_subtitle_login">Entre com sua conta de motorista.</string>
     <string name="login_subtitle_register">Crie sua conta de motorista.</string>
     <string name="login_email_hint">E-mail</string>
@@ -83,7 +83,7 @@ Quando você <b>aceita</b> uma corrida, podemos opcionalmente enviar para o noss
     <string name="accessibility_permission_required">Permissão de acessibilidade necessária</string>
 
     <!-- Licença / paywall -->
-    <string name="license_title">Licença Nexus Drive</string>
+    <string name="license_title">Licença Nexus</string>
     <string name="license_status_trial">Você está no período de teste gratuito. Restam %1$d horas.</string>
     <string name="license_status_active">Licença ativa por mais %1$d dia(s) — válida até %2$s.</string>
     <string name="license_status_expired">Seu acesso expirou. Insira um código de ativação para continuar usando.</string>
@@ -112,7 +112,7 @@ Quando você <b>aceita</b> uma corrida, podemos opcionalmente enviar para o noss
     <string name="admin_copy">Copiar</string>
     <string name="admin_share">Compartilhar</string>
     <string name="admin_copied">Código copiado</string>
-    <string name="admin_share_template">Seu código de ativação Nexus Drive (30 dias):\n\n%1$s\n\nNo app, vá em \"Ver licença\" e cole o código.</string>
+    <string name="admin_share_template">Seu código de ativação Nexus (30 dias):\n\n%1$s\n\nNo app, vá em \"Ver licença\" e cole o código.</string>
     <string name="admin_history">Códigos gerados (últimos 20)</string>
     <string name="admin_history_empty">Nenhum código gerado ainda.</string>
 </resources>

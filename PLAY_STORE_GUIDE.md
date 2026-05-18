@@ -1,4 +1,4 @@
-# Guia de Submissão à Google Play Store — Nexus Drive
+# Guia de Submissão à Google Play Store — Nexus
 
 Este documento existe porque o Google Play **bane apps que usam
 `BIND_ACCESSIBILITY_SERVICE` sem justificar com transparência o uso**.
@@ -14,7 +14,7 @@ para **acessibilidade real** (ajudar usuários com deficiência) **ou**
 para um propósito legítimo claramente comunicado ao usuário, com
 disclosure prominente *antes* da solicitação.
 
-O Nexus Drive se enquadra na segunda categoria: somos uma ferramenta
+O Nexus se enquadra na segunda categoria: somos uma ferramenta
 de produtividade para motoristas que precisa ler o conteúdo da tela
 de ofertas para calcular lucro. Para passar na revisão, precisamos:
 
@@ -28,7 +28,7 @@ de ofertas para calcular lucro. Para passar na revisão, precisamos:
 ## 2. Texto a colar no formulário da Play Console
 
 > **Funcionalidade principal do app:**
-> O Nexus Drive é uma ferramenta de produtividade para motoristas
+> O Nexus é uma ferramenta de produtividade para motoristas
 > de aplicativo (Uber Driver, 99 Driver e inDrive). Ele calcula em tempo real
 > a rentabilidade de cada oferta de corrida (lucro por hora e por
 > quilômetro), considerando o custo operacional pré-configurado pelo
@@ -37,7 +37,7 @@ de ofertas para calcular lucro. Para passar na revisão, precisamos:
 > **Por que precisamos da API de Acessibilidade:**
 > Os apps de motorista exibem o valor, distância e duração de cada
 > oferta apenas na tela. Como esses dados não estão disponíveis em
-> nenhuma API pública, a única forma de o Nexus Drive auxiliar o
+> nenhuma API pública, a única forma de o Nexus auxiliar o
 > motorista é lendo o texto já visível na tela do próprio motorista.
 >
 > **Escopo restrito:**
@@ -49,7 +49,7 @@ de ofertas para calcular lucro. Para passar na revisão, precisamos:
 > único APK para motorista e passageiro; o app só calcula lucro
 > quando uma oferta de corrida está visível na tela.)
 >
-> **Não substituímos um leitor de tela:** o Nexus Drive não pretende
+> **Não substituímos um leitor de tela:** o Nexus não pretende
 > auxiliar usuários com deficiência visual; é claramente apresentado
 > como ferramenta de produtividade financeira. O usuário concorda
 > com isso através do disclosure exibido na primeira execução.
@@ -114,7 +114,7 @@ Play Console.
   disclosure → fluxo do app deve ser: tela de disclosure → botão
   "Conceder" que leva às Configurações do sistema. Nunca tentar
   conceder programaticamente.
-- ❌ Cliques automáticos em apps de terceiros — o Nexus Drive **só
+- ❌ Cliques automáticos em apps de terceiros — o Nexus **só
   lê**, nunca toca por você.
 - ❌ Coletar dados de apps fora da allow-list — o filtro do XML é
   obrigatório e o filtro imperativo no `onAccessibilityEvent` é
@@ -130,7 +130,7 @@ Play Console.
 ## 7. Antes de enviar para revisão — checklist final
 
 - [ ] `applicationId` em `app/build.gradle.kts` é o final
-      (`com.nexusdrive.app` ou outro reservado pela sua conta).
+      (`app.nexus.mobile` ou outro reservado pela sua conta).
 - [ ] Política de privacidade publicada e linkada na Play Console.
 - [ ] Vídeo de demonstração em mp4 ≤ 30s.
 - [ ] Screenshots da tela de disclosure (`OnboardingActivity`).
