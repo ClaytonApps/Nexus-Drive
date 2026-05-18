@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -37,7 +39,7 @@ android {
         // Pode ser sobrescrito via local.properties (NEXUS_LICENSE_SECRET=...)
         // — esse arquivo é gitignored.
         val licenseSecret: String = run {
-            val props = java.util.Properties()
+            val props = Properties()
             val f = rootProject.file("local.properties")
             if (f.exists()) f.inputStream().use { props.load(it) }
             props.getProperty("NEXUS_LICENSE_SECRET")
