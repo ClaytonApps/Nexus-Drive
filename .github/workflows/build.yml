@@ -27,17 +27,15 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
+      # Fixa o Gradle em 8.9: o Gradle do sistema do runner (9.x) não é
+      # compatível com o Android Gradle Plugin 8.7.3.
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v3
-
-      - name: Generate gradle wrapper jar
-        run: gradle wrapper --gradle-version 8.9
-
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+        with:
+          gradle-version: '8.9'
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
