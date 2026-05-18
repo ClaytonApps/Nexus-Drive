@@ -92,10 +92,12 @@ dependencies {
     // Ponte entre as Task<T> do Firebase/Play Services e as coroutines (.await()).
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
 
-    // Autenticação de usuários (login). O firebase-auth funciona apenas
-    // quando o app é compilado com um google-services.json válido.
+    // Autenticação de usuários (login) e Firestore (estado da licença
+    // por conta). Funcionam apenas quando o app é compilado com um
+    // google-services.json válido.
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
 
     // Networking
     implementation("com.squareup.retrofit2:retrofit:2.11.0")

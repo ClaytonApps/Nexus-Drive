@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import com.nexusdrive.app.R
 import com.nexusdrive.app.data.model.License
 import com.nexusdrive.app.data.repository.AuthRepository
@@ -69,20 +71,23 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        // Gate de licença — se expirou, joga direto pro paywall.
-        val license = licenseRepo.current()
-        if (license is License.Expired) {
-            startActivity(Intent(this, LicenseGateActivity::class.java))
-            return
-        }
-
-        renderLicenseBanner(license)
         findViewById<TextView>(R.id.status_accessibility)
             .text = getString(R.string.status_accessibility_granted)
         findViewById<TextView>(R.id.status_overlay)
             .text = getString(R.string.status_overlay_granted)
-
         viewModel.checkRequiredPermissions(this)
+
+        // Acesso (teste/licença): sincroniza com o Firestore da conta
+        // antes de decidir o gate, pois o estado pode ter mudado em
+        // outro aparelho. Se expirou, joga direto pro paywall.
+        lifecycleScope.launch {
+            licenseRepo.sync(authRepo.driverUid)
+            when (val license = licenseRepo.current()) {
+                is License.Expired ->
+                    startActivity(Intent(this@MainActivity, LicenseGateActivity::class.java))
+                else -> renderLicenseBanner(license)
+            }
+        }
     }
 
     private fun renderLicenseBanner(license: License) {

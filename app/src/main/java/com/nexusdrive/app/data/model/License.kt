@@ -2,13 +2,13 @@ package com.nexusdrive.app.data.model
 
 /** Estado atual da licença do app. */
 sealed class License {
-    /** Período de teste gratuito (2 dias após primeira instalação). */
+    /** Período de teste gratuito (2 dias a partir do primeiro login). */
     data class Trial(val expiresAtEpochMs: Long) : License()
 
-    /** Licença ativa por código de 30 dias. */
+    /** Acesso pago, somando códigos de ativação de 30 dias. */
     data class Active(val expiresAtEpochMs: Long) : License()
 
-    /** Trial e licença expiradas — app bloqueado até inserir código. */
+    /** Trial e acesso pago expirados — app bloqueado até inserir código. */
     data object Expired : License()
 
     fun remainingMillis(now: Long = System.currentTimeMillis()): Long = when (this) {

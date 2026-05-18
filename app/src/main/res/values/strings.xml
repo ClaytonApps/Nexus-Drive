@@ -87,7 +87,7 @@ Quando você <b>aceita</b> uma corrida, podemos opcionalmente enviar para o noss
     <string name="license_status_trial">Você está no período de teste gratuito. Restam %1$d horas.</string>
     <string name="license_status_active">Licença ativa por mais %1$d dia(s) — válida até %2$s.</string>
     <string name="license_status_expired">Seu acesso expirou. Insira um código de ativação para continuar usando.</string>
-    <string name="license_pricing">Cada código ativa o app por 30 dias por R$ 7,00.\nSolicite seu código pelo WhatsApp do administrador.</string>
+    <string name="license_pricing">Teste grátis de 2 dias. Depois, o acesso custa R$ 7,80 por mês — cada código de ativação libera 30 dias.\nSolicite seu código pelo WhatsApp do administrador.</string>
     <string name="license_enter_code">Código de ativação</string>
     <string name="license_code_hint">NXS-XXXX-XXXX-XXXX-XXXX-XXXX</string>
     <string name="license_redeem">Ativar</string>
@@ -107,7 +107,7 @@ Quando você <b>aceita</b> uma corrida, podemos opcionalmente enviar para o noss
     <string name="admin_pin_wrong">PIN incorreto</string>
 
     <string name="admin_title">Geração de códigos</string>
-    <string name="admin_subtitle">Cada código ativa o Nexus Drive por 30 dias em qualquer aparelho.</string>
+    <string name="admin_subtitle">Cada código adiciona 30 dias de acesso (mensalidade de R$ 7,80) à conta em que for resgatado.</string>
     <string name="admin_generate_30">Gerar código (30 dias)</string>
     <string name="admin_copy">Copiar</string>
     <string name="admin_share">Compartilhar</string>

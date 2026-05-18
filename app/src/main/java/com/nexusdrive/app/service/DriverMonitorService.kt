@@ -13,6 +13,11 @@ import com.nexusdrive.app.domain.usecase.CalculateProfitUseCase
 import com.nexusdrive.app.ui.overlay.OverlayManager
 import com.nexusdrive.app.util.CapturedTextBus
 import com.nexusdrive.app.util.PackageDiscovery
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
 /**
@@ -59,6 +64,7 @@ class DriverMonitorService : AccessibilityService() {
     private val calculateProfit = CalculateProfitUseCase()
 
     private val supportedPackages: Set<String> by lazy { PackageDiscovery.supportedPackages() }
+    private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     private var foregroundDriverApp: String? = null
     private var lastEstimate: ProfitEstimate? = null
@@ -70,6 +76,8 @@ class DriverMonitorService : AccessibilityService() {
         settings = DriverSettingsRepository(this)
         ridesRepo = AcceptedRideRepository(applicationContext)
         licenseRepo = LicenseRepository(applicationContext)
+        // Atualiza o cache de licença com o Firestore da conta logada.
+        serviceScope.launch { licenseRepo.sync(authRepo.driverUid) }
         Log.i(TAG, "DriverMonitorService conectado")
     }
 
@@ -251,6 +259,7 @@ class DriverMonitorService : AccessibilityService() {
     }
 
     override fun onDestroy() {
+        serviceScope.cancel()
         overlayManager?.hide()
         overlayManager = null
         super.onDestroy()

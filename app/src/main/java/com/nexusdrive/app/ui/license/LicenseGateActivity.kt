@@ -6,10 +6,13 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.TextInputEditText
 import com.nexusdrive.app.R
 import com.nexusdrive.app.data.model.License
+import com.nexusdrive.app.data.repository.AuthRepository
 import com.nexusdrive.app.data.repository.LicenseRepository
+import kotlinx.coroutines.launch
 import java.util.Date
 import java.util.concurrent.TimeUnit
 
@@ -21,6 +24,7 @@ import java.util.concurrent.TimeUnit
 class LicenseGateActivity : AppCompatActivity() {
 
     private lateinit var repo: LicenseRepository
+    private val authRepo = AuthRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +35,15 @@ class LicenseGateActivity : AppCompatActivity() {
         val codeField = findViewById<TextInputEditText>(R.id.edit_code)
 
         renderStatus(status)
+        // Sincroniza o estado da conta antes de mostrar o status real.
+        lifecycleScope.launch {
+            repo.sync(authRepo.driverUid)
+            renderStatus(status)
+        }
 
         findViewById<Button>(R.id.btn_redeem).setOnClickListener {
             val code = codeField.text?.toString().orEmpty()
-            when (val result = repo.redeem(code)) {
+            when (val result = repo.redeem(code, authRepo.driverUid)) {
                 is LicenseRepository.RedeemResult.Success -> {
                     val date = DateFormat.getDateFormat(this)
                         .format(Date(result.newExpiryEpochMs))

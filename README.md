@@ -33,10 +33,49 @@ Para ativar o login:
 1. Crie um projeto no [Firebase Console](https://console.firebase.google.com/).
 2. Adicione um app Android com o pacote `com.nexusdrive.app`.
 3. Em **Authentication → Sign-in method**, ative **E-mail/senha**.
-4. Baixe o `google-services.json` e coloque em `app/google-services.json`.
-5. Commite esse arquivo — o CI passa a gerar APKs com login habilitado.
+4. Em **Firestore Database**, crie o banco (modo produção) e publique as
+   regras de segurança da seção abaixo.
+5. Baixe o `google-services.json` e coloque em `app/google-services.json`.
+6. Commite esse arquivo — o CI passa a gerar APKs com login habilitado.
    (O plugin do Google Services é aplicado automaticamente só quando o
    arquivo existe, então o build não quebra antes desse passo.)
+
+## Acesso: teste grátis e licença
+
+Modelo de cobrança:
+
+- **Teste grátis de 2 dias**, contado a partir do primeiro login da conta.
+- Depois disso o app **bloqueia** até resgatar um código de ativação.
+- Cada código adiciona **30 dias** de acesso. Mensalidade de **R$ 7,80**.
+
+O estado de cada conta fica no Firestore, na coleção `entitlements`
+(documento = UID do motorista), com os campos `trialStartedAt`,
+`paidUntil` e `usedCodes`. Guardar no servidor impede que reinstalar o
+app ou limpar os dados reinicie o teste. As `SharedPreferences` locais
+apenas espelham esses valores para leitura rápida e uso offline.
+
+Regras de segurança do Firestore (cada motorista só acessa o próprio
+documento):
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /entitlements/{uid} {
+      allow read, create, update: if request.auth != null
+                                  && request.auth.uid == uid;
+      allow delete: if false;
+    }
+  }
+}
+```
+
+**Limitação conhecida:** a verificação do código (HMAC) e a gravação de
+`paidUntil` acontecem no app. Um usuário avançado com o APK decompilado
+poderia gravar `paidUntil` direto no próprio documento. Para um produto
+pago em escala, valide os códigos numa Cloud Function (o cliente envia o
+código; só o servidor grava `paidUntil`). É a mesma ressalva do
+`LICENSE_SECRET` — adequado para MVP / venda direta.
 
 ## Permissões
 
