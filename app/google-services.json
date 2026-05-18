@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "279946536371",
+    "project_id": "nexus-c4dde",
+    "storage_bucket": "nexus-c4dde.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279946536371:android:628ac2acef014665a217c6",
+        "android_client_info": {
+          "package_name": "app.nexus.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBx8hPcvFMu9WXPC4C1sNtrre5v8oIQhIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
