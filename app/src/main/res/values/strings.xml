@@ -49,6 +49,27 @@ Quando você <b>aceita</b> uma corrida, podemos opcionalmente enviar para o noss
     <string name="status_overlay_granted">Sobreposição: ativa</string>
     <string name="status_overlay_missing">Sobreposição: não concedida</string>
 
+    <!-- Login / autenticação de motoristas -->
+    <string name="login_title">Nexus Drive</string>
+    <string name="login_subtitle_login">Entre com sua conta de motorista.</string>
+    <string name="login_subtitle_register">Crie sua conta de motorista.</string>
+    <string name="login_email_hint">E-mail</string>
+    <string name="login_password_hint">Senha</string>
+    <string name="login_btn_signin">Entrar</string>
+    <string name="login_btn_signup">Criar conta</string>
+    <string name="login_toggle_to_register">Não tem conta? Criar conta</string>
+    <string name="login_toggle_to_login">Já tem conta? Entrar</string>
+    <string name="login_forgot">Esqueci minha senha</string>
+    <string name="login_error_email">Informe um e-mail válido</string>
+    <string name="login_error_password">A senha precisa ter no mínimo 6 caracteres</string>
+    <string name="login_reset_sent">E-mail de redefinição de senha enviado para %1$s</string>
+    <string name="login_unavailable">Login indisponível: este app não foi configurado com o Firebase</string>
+
+    <!-- Conta (em Configurações) -->
+    <string name="account_section_label">Conta</string>
+    <string name="account_signed_in_as">Conectado como %1$s</string>
+    <string name="account_logout">Sair da conta</string>
+
     <!-- Settings -->
     <string name="settings_title">Configurações</string>
     <string name="settings_cost_label">Custo por km (R$)</string>

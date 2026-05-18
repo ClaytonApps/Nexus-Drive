@@ -6,6 +6,7 @@ import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
 import com.nexusdrive.app.data.model.ProfitEstimate
 import com.nexusdrive.app.data.repository.AcceptedRideRepository
+import com.nexusdrive.app.data.repository.AuthRepository
 import com.nexusdrive.app.data.repository.DriverSettingsRepository
 import com.nexusdrive.app.data.repository.LicenseRepository
 import com.nexusdrive.app.domain.usecase.CalculateProfitUseCase
@@ -54,6 +55,7 @@ class DriverMonitorService : AccessibilityService() {
     private lateinit var settings: DriverSettingsRepository
     private lateinit var ridesRepo: AcceptedRideRepository
     private lateinit var licenseRepo: LicenseRepository
+    private val authRepo = AuthRepository()
     private val calculateProfit = CalculateProfitUseCase()
 
     private val supportedPackages: Set<String> by lazy { PackageDiscovery.supportedPackages() }
@@ -182,7 +184,9 @@ class DriverMonitorService : AccessibilityService() {
         lastSubmittedAt = now
 
         ridesRepo.submit(
-            driverId = settings.driverId,
+            // Se o motorista estiver logado, o UID da conta identifica a
+            // corrida; caso contrário, cai no id anônimo local do aparelho.
+            driverId = authRepo.driverUid ?: settings.driverId,
             sourceApp = packageName,
             estimate = estimate,
             costPerKmBrl = settings.costPerKmBrl

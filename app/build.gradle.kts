@@ -4,6 +4,13 @@ plugins {
     id("kotlin-parcelize")
 }
 
+// O plugin do Google Services só é aplicado se o google-services.json
+// existir. Assim o build de CI continua passando antes do Firebase ser
+// configurado — o app simplesmente roda com o login desativado.
+if (project.file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
+}
+
 android {
     namespace = "com.nexusdrive.app"
     compileSdk = 35
@@ -82,6 +89,13 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.9.1")
     implementation("androidx.fragment:fragment-ktx:1.8.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    // Ponte entre as Task<T> do Firebase/Play Services e as coroutines (.await()).
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
+
+    // Autenticação de usuários (login). O firebase-auth funciona apenas
+    // quando o app é compilado com um google-services.json válido.
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.firebase:firebase-auth")
 
     // Networking
     implementation("com.squareup.retrofit2:retrofit:2.11.0")

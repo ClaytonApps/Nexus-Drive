@@ -9,8 +9,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.nexusdrive.app.R
 import com.nexusdrive.app.data.model.License
+import com.nexusdrive.app.data.repository.AuthRepository
 import com.nexusdrive.app.data.repository.LicenseRepository
 import com.nexusdrive.app.ui.admin.AdminPinActivity
+import com.nexusdrive.app.ui.auth.LoginActivity
 import com.nexusdrive.app.ui.debug.DebugActivity
 import com.nexusdrive.app.ui.license.LicenseGateActivity
 import com.nexusdrive.app.ui.onboarding.OnboardingActivity
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
     private lateinit var licenseRepo: LicenseRepository
+    private val authRepo = AuthRepository()
 
     /** Tap-counter na logo libera a área admin. */
     private var titleTapCount = 0
@@ -54,6 +57,14 @@ class MainActivity : AppCompatActivity() {
         val overlayOk = PermissionUtils.canDrawOverlays(this)
         if (!accessibilityOk || !overlayOk) {
             startActivity(Intent(this, OnboardingActivity::class.java))
+            finish()
+            return
+        }
+
+        // Login do motorista — exigido apenas quando o Firebase está
+        // configurado neste build. Sem Firebase, esta etapa é ignorada.
+        if (authRepo.isAvailable && !authRepo.isSignedIn) {
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
             return
         }
