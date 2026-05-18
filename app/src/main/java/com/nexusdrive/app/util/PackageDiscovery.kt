@@ -24,8 +24,16 @@ object PackageDiscovery {
         "br.com.taxis99.driver"
     )
 
+    /**
+     * Candidato conhecido do inDrive. É um app unificado: o mesmo APK
+     * atende motorista e passageiro (o papel é trocado dentro do app).
+     */
+    private val INDRIVE_CANDIDATES = listOf(
+        "sinet.startup.inDriver"
+    )
+
     /** Todos os candidatos suportados. */
-    private val ALL_CANDIDATES = UBER_CANDIDATES + NINETYNINE_CANDIDATES
+    private val ALL_CANDIDATES = UBER_CANDIDATES + NINETYNINE_CANDIDATES + INDRIVE_CANDIDATES
 
     /** Retorna apenas os pacotes que estão de fato instalados no aparelho. */
     fun installedDriverApps(context: Context): Set<String> {

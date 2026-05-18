@@ -29,7 +29,7 @@ de ofertas para calcular lucro. Para passar na revisão, precisamos:
 
 > **Funcionalidade principal do app:**
 > O Nexus Drive é uma ferramenta de produtividade para motoristas
-> de aplicativo (Uber Driver e 99 Driver). Ele calcula em tempo real
+> de aplicativo (Uber Driver, 99 Driver e inDrive). Ele calcula em tempo real
 > a rentabilidade de cada oferta de corrida (lucro por hora e por
 > quilômetro), considerando o custo operacional pré-configurado pelo
 > motorista (combustível, manutenção, depreciação).
@@ -41,11 +41,13 @@ de ofertas para calcular lucro. Para passar na revisão, precisamos:
 > motorista é lendo o texto já visível na tela do próprio motorista.
 >
 > **Escopo restrito:**
-> O serviço só processa eventos dos pacotes `com.ubercab.driver` e
-> `com.taxis99.driver`, configurados no atributo `android:packageNames`
-> do `accessibility_service_config.xml`. Eventos de qualquer outro
-> app são descartados pelo sistema operacional antes de chegarem ao
-> nosso código.
+> O serviço só processa eventos dos pacotes `com.ubercab.driver`,
+> `com.taxis99.driver` e `sinet.startup.inDriver`, configurados no
+> atributo `android:packageNames` do `accessibility_service_config.xml`.
+> Eventos de qualquer outro app são descartados pelo sistema
+> operacional antes de chegarem ao nosso código. (O inDrive usa um
+> único APK para motorista e passageiro; o app só calcula lucro
+> quando uma oferta de corrida está visível na tela.)
 >
 > **Não substituímos um leitor de tela:** o Nexus Drive não pretende
 > auxiliar usuários com deficiência visual; é claramente apresentado
@@ -93,7 +95,7 @@ A página deve cobrir:
 
 | Permissão | Por que está no manifest | Visível ao usuário? |
 |---|---|---|
-| `BIND_ACCESSIBILITY_SERVICE` | Ler ofertas de corrida nos apps Uber/99 | Sim — tela "Acessibilidade" do Android |
+| `BIND_ACCESSIBILITY_SERVICE` | Ler ofertas de corrida nos apps Uber/99/inDrive | Sim — tela "Acessibilidade" do Android |
 | `SYSTEM_ALERT_WINDOW` | Mostrar o "semáforo" sobre o app de motorista | Sim — Configurações → Sobreposição |
 | `INTERNET` / `ACCESS_NETWORK_STATE` | Envio opcional de corridas aceitas | Não exige diálogo |
 | `RECEIVE_BOOT_COMPLETED` | Reenfileirar uploads pendentes após reiniciar o aparelho | Não exige diálogo |
@@ -121,7 +123,7 @@ Play Console.
   citar acessibilidade — o revisor lê.
 - ❌ Esquecer o vídeo demonstrativo em "Declaração de uso de
   acessibilidade" — grave 30s mostrando: (1) tela de disclosure,
-  (2) ativação da permissão, (3) overlay aparecendo só sobre Uber/99.
+  (2) ativação da permissão, (3) overlay aparecendo só sobre Uber/99/inDrive.
 
 ---
 

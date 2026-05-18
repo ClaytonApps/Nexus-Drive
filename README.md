@@ -1,8 +1,8 @@
 # Nexus Drive
 
 Aplicativo Android nativo (Kotlin) para auxílio a motoristas de app — calcula
-em tempo real a rentabilidade de cada oferta de corrida nos apps Uber Driver
-e 99 Driver, exibindo um overlay (verde/amarelo/vermelho) com lucro líquido
+em tempo real a rentabilidade de cada oferta de corrida nos apps Uber Driver,
+99 Driver e inDrive, exibindo um overlay (verde/amarelo/vermelho) com lucro líquido
 por hora e por km.
 
 ## Como compilar

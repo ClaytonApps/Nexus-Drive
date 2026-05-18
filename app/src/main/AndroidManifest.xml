@@ -15,6 +15,7 @@
         <package android:name="com.taxis99.driver" />
         <package android:name="com.taxis99" />
         <package android:name="br.com.taxis99.driver" />
+        <package android:name="sinet.startup.inDriver" />
     </queries>
 
     <application

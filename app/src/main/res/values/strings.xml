@@ -3,7 +3,7 @@
     <string name="app_name">Nexus Drive</string>
     <string name="accessibility_service_label">Nexus Drive - Análise de Corridas</string>
     <string name="accessibility_service_summary">Analisa ofertas de corridas em tempo real</string>
-    <string name="accessibility_service_description">O Nexus Drive utiliza o serviço de acessibilidade para ler informações das ofertas de corrida exibidas pelos aplicativos de motorista (Uber, 99) e calcular automaticamente a viabilidade financeira de cada corrida (R$/km, R$/hora). Nenhum dado é enviado para fora do dispositivo sem sua autorização.</string>
+    <string name="accessibility_service_description">O Nexus Drive utiliza o serviço de acessibilidade para ler informações das ofertas de corrida exibidas pelos aplicativos de motorista (Uber, 99, inDrive) e calcular automaticamente a viabilidade financeira de cada corrida (R$/km, R$/hora). Nenhum dado é enviado para fora do dispositivo sem sua autorização.</string>
 
     <!-- Onboarding / Disclosure de permissões (requisito do Google Play) -->
     <string name="onboarding_title">Bem-vindo ao Nexus Drive</string>
@@ -12,9 +12,9 @@
     <string name="disclosure_accessibility_title">1. Serviço de Acessibilidade</string>
     <string name="disclosure_accessibility_body"><![CDATA[
 <b>Por que precisamos:</b><br/>
-O Nexus Drive lê apenas as informações já visíveis na sua tela quando o app da Uber ou 99 está em primeiro plano (valor da corrida, distância e tempo estimado). Sem essa permissão, o aplicativo não consegue calcular se uma corrida vale a pena.<br/><br/>
+O Nexus Drive lê apenas as informações já visíveis na sua tela quando o app da Uber, 99 ou inDrive está em primeiro plano (valor da corrida, distância e tempo estimado). Sem essa permissão, o aplicativo não consegue calcular se uma corrida vale a pena.<br/><br/>
 <b>O que NÃO fazemos:</b><br/>
-• Não lemos mensagens, e-mails, senhas, conteúdo de navegador, redes sociais ou qualquer app fora da Uber/99.<br/>
+• Não lemos mensagens, e-mails, senhas, conteúdo de navegador, redes sociais ou qualquer app fora da Uber, 99 e inDrive.<br/>
 • Não gravamos áudio nem capturamos a tela.<br/>
 • Não realizamos cliques automáticos no seu lugar.<br/>
 • Não compartilhamos dados com terceiros sem o seu consentimento explícito.<br/><br/>
@@ -29,7 +29,7 @@ Você pode desativar essa permissão a qualquer momento em <b>Configurações �
     <string name="disclosure_overlay_body"><![CDATA[
 <b>Por que precisamos:</b><br/>
 Para mostrar o "semáforo" (verde/amarelo/vermelho) por cima do app de motorista enquanto a oferta de corrida aparece. Sem essa permissão, você teria que sair do app da Uber/99 para ver a análise — o que tornaria a ferramenta inútil.<br/><br/>
-A sobreposição só aparece quando a Uber Driver ou 99 Driver está em primeiro plano e desaparece automaticamente quando você sai desses apps.
+A sobreposição só aparece quando a Uber Driver, 99 Driver ou inDrive está em primeiro plano e desaparece automaticamente quando você sai desses apps.
     ]]></string>
 
     <string name="disclosure_data_title">3. Envio de Dados (opcional)</string>
