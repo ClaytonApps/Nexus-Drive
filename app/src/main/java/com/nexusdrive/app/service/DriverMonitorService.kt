@@ -200,10 +200,18 @@ class DriverMonitorService : AccessibilityService() {
     }
 
     private fun extractPrice(text: String): Double? {
+        // A tela de oferta pode exibir vários valores em R$ (tarifa, gorjeta,
+        // total). O valor da corrida costuma ser o maior — escolhemos esse,
+        // em vez do primeiro encontrado, para não casar com um valor parcial.
         val m = PRICE_PATTERN.matcher(text)
-        if (!m.find()) return null
-        val raw = m.group(1) ?: return null
-        return raw.replace(" ", "").replace(".", "").replace(",", ".").toDoubleOrNull()
+        var best: Double? = null
+        while (m.find()) {
+            val raw = m.group(1) ?: continue
+            val value = raw.replace(" ", "").replace(".", "").replace(",", ".")
+                .toDoubleOrNull() ?: continue
+            if (best == null || value > best) best = value
+        }
+        return best
     }
 
     private fun extractDistanceKm(text: String): Double? {

@@ -24,9 +24,10 @@ import com.nexusdrive.app.data.model.ProfitEstimate
  * "semáforo" durante uma corrida no Uber/99.
  *
  * Estado visual:
- *  - [Verdict.GOOD]    -> fundo verde   (lucro alto, aceitar)
- *  - [Verdict.BAD]     -> fundo vermelho (lucro baixo, recusar)
- *  - [Verdict.ANALYZING] -> fundo amarelo (ainda calculando)
+ *  - [Verdict.GOOD]      -> fundo verde    (lucro alto, aceitar)
+ *  - [Verdict.BAD]       -> fundo vermelho (lucro baixo, recusar)
+ *  - [Verdict.MEDIUM]    -> fundo amarelo  (lucro intermediário, decisão do motorista)
+ *  - [Verdict.ANALYZING] -> fundo amarelo  (ainda calculando)
  *
  * IMPORTANTE: a permissão `SYSTEM_ALERT_WINDOW` precisa ter sido
  * concedida pelo usuário em "Configurações → Apps especiais →
@@ -35,7 +36,7 @@ import com.nexusdrive.app.data.model.ProfitEstimate
  */
 class OverlayManager(private val context: Context) {
 
-    enum class Verdict { GOOD, BAD, ANALYZING }
+    enum class Verdict { GOOD, BAD, MEDIUM, ANALYZING }
 
     private val windowManager: WindowManager =
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
@@ -86,12 +87,14 @@ class OverlayManager(private val context: Context) {
             when (verdict) {
                 Verdict.GOOD -> R.drawable.bg_overlay_green
                 Verdict.BAD -> R.drawable.bg_overlay_red
+                Verdict.MEDIUM -> R.drawable.bg_overlay_yellow
                 Verdict.ANALYZING -> R.drawable.bg_overlay_yellow
             }
         )
         labelView?.text = when (verdict) {
             Verdict.GOOD -> "BOA"
             Verdict.BAD -> "RUIM"
+            Verdict.MEDIUM -> "MÉDIO"
             Verdict.ANALYZING -> "ANALISANDO"
         }
         valueText?.let { valueView?.text = it }
@@ -184,7 +187,7 @@ class OverlayManager(private val context: Context) {
         val verdict = when {
             perHour >= GOOD_HOURLY_THRESHOLD_BRL -> Verdict.GOOD
             perHour <= BAD_HOURLY_THRESHOLD_BRL -> Verdict.BAD
-            else -> Verdict.ANALYZING
+            else -> Verdict.MEDIUM
         }
         // Linha 1 mantém a sigla; usamos o "valor" para mostrar o
         // dado mais acionável: lucro líquido por hora estimado.

@@ -95,13 +95,14 @@ A página deve cobrir:
 |---|---|---|
 | `BIND_ACCESSIBILITY_SERVICE` | Ler ofertas de corrida nos apps Uber/99 | Sim — tela "Acessibilidade" do Android |
 | `SYSTEM_ALERT_WINDOW` | Mostrar o "semáforo" sobre o app de motorista | Sim — Configurações → Sobreposição |
-| `FOREGROUND_SERVICE` + `FOREGROUND_SERVICE_SPECIAL_USE` | Manter o overlay ativo durante a corrida | Sim — notificação persistente |
-| `POST_NOTIFICATIONS` | Notificação do foreground service (Android 13+) | Sim — diálogo de runtime |
 | `INTERNET` / `ACCESS_NETWORK_STATE` | Envio opcional de corridas aceitas | Não exige diálogo |
-| `ACCESS_FINE/COARSE_LOCATION` | Reservado para futuro tracking de rota (opt-in) | Sim — diálogo de runtime |
-| `WAKE_LOCK` | Manter o serviço ativo durante uso prolongado | Não exige diálogo |
-| `RECEIVE_BOOT_COMPLETED` | Religar serviços conforme preferência do usuário | Não exige diálogo |
-| `QUERY_ALL_PACKAGES` | Detectar se Uber/99 estão instalados | Sim — uso justificado na Play Console |
+| `RECEIVE_BOOT_COMPLETED` | Reenfileirar uploads pendentes após reiniciar o aparelho | Não exige diálogo |
+
+**Detecção de apps instalados:** o app **não** usa `QUERY_ALL_PACKAGES`.
+A visibilidade de pacotes é restrita por um elemento `<queries>` no
+manifest, que lista explicitamente apenas os pacotes Uber/99 — a
+abordagem recomendada pelo Google, que não exige justificativa na
+Play Console.
 
 ---
 
